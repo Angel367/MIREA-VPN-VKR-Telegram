@@ -1,17 +1,16 @@
-# Используем официальный образ Python 3.10
 FROM python:3.10-slim
 
-# Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /app
 
-# Копируем зависимости
+# Установка зависимостей системы, включая CA-сертификаты
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY requirements.txt .
 
-# Устанавливаем зависимости
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Копируем всё остальное (включая main.py)
 COPY . .
 
-# Запускаем main.py
 CMD ["python", "main.py"]
