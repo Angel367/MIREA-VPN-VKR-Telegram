@@ -1,7 +1,7 @@
 from decouple import config
 
 # Bot settings
-BOT_TOKEN = '7548527414:AAEA-4WBptWx13gdMk_4sXV8AekPiCCp0LQ'
+BOT_TOKEN = ''
 ADMIN_IDS = []# list(map(int, config('ADMIN_IDS', default='').split(',')))
 
 # Backend API settings

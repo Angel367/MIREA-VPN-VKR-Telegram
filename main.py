@@ -21,6 +21,7 @@ dp = Dispatcher(bot, storage=storage)
 async def on_startup(dispatcher):
     """Действия при запуске бота"""
     # Register all handlers
+    await bot.delete_webhook(drop_pending_updates=True)
     register_all_handlers(dispatcher)
 
     logger.info("Bot started")
